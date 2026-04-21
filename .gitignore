@@ -1,4 +1,12 @@
+# Секреты и конфигурация
 .env
+.env.local
+.env.*.local
+
+# Python
 __pycache__/
-*.pyc
-.DS_Store
+*.py[cod]
+*.so
+
+# Docker
+*.log

@@ -1,4 +1,7 @@
+version: '3.8'
+
 services:
+  # погодное приложение
   weather-app:
     image: 1ezhevika1/weather-app:latest
     container_name: weather-app
@@ -10,6 +13,7 @@ services:
     networks:
       - weather-network
 
+  # Nginx как обратный прокси
   nginx:
     image: nginx:alpine
     container_name: weather-nginx
@@ -23,6 +27,7 @@ services:
     networks:
       - weather-network
 
+  # Watchtower для автоматического обновления
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
@@ -32,8 +37,9 @@ services:
     environment:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_POLL_INTERVAL=60
-      - WATCHTOWER_NO_RESTART=false
-    command: --interval 60 --cleanup weather-app
+    command: --interval 60 weather-app
+    depends_on:
+      - weather-app
     networks:
       - weather-network
 

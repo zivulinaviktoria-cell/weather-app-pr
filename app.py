@@ -57,6 +57,7 @@ def get_weather():
                 'timestamp': datetime.now().isoformat(),
                 'version': '2.0.0',
                 'new_feature': 'Weather forecast updated!'
+                
             }
             return jsonify(weather_info)
         else:
