@@ -16,7 +16,7 @@ def home():
             '/weather?city=<city_name>': 'Get weather by city name',
             '/health': 'Health check'
         },
-        'version': '1.0.0',
+        'version': '2.0.0',
         'status': 'running'
     })
 
@@ -55,7 +55,8 @@ def get_weather():
                 'description': data['weather'][0]['description'],
                 'wind_speed': data['wind']['speed'],
                 'timestamp': datetime.now().isoformat(),
-                'version': '1.0.0'
+                'version': '2.0.0',
+                'new_feature': 'Weather forecast updated!'
             }
             return jsonify(weather_info)
         else:
